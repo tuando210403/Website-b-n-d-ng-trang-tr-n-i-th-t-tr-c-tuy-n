@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">DecorHome</div>
+    </header>
+    <section class="register-section">
+        <h2>Đăng ký thành viên</h2>
+        <form onsubmit="event.preventDefault(); registerUser();">
+            <input type="text" id="regName" placeholder="Tên đăng nhập">
+            <input type="password" id="regPassword" placeholder="Mật khẩu">
+            <input type="email" id="regEmail" placeholder="Email">
+            <button class="btn">Đăng ký</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Bản quyền © 2025 DecorHome</p>
+    </footer>
+    <script>
+        function registerUser() {
+            const name = document.getElementById("regName").value.trim();
+            const password = document.getElementById("regPassword").value.trim();
+            const email = document.getElementById("regEmail").value.trim();
+
+            if (!name || !password || !email) {
+                alert("⚠️ Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            localStorage.setItem("registeredUser", JSON.stringify({
+                name,
+                password,
+                email
+            }));
+            alert("✅ Đăng ký thành công! Đang chuyển đến trang đăng nhập...");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+
+</html>

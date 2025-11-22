@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chi tiết tin - DecorHome</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">DecorHome</div>
+    </header>
+
+    <section class="news-detail">
+        <div class="back-home"><a href="news.html" class="btn-home">← Trở về Tin tức</a></div>
+
+        <h2 id="news-title">Đang tải...</h2>
+        <img id="news-img" src="" alt="" style="max-width:100%;border-radius:8px;margin:16px 0;display:none;">
+        <div id="news-body" style="font-size:16px;color:#444;line-height:1.7;"></div>
+    </section>
+
+    <footer>
+        <p>© 2025 DecorHome</p>
+    </footer>
+
+    <script>
+        // Debug: đảm bảo script chạy sau DOM
+        console.log('news-detail script loaded');
+
+        // Lấy id từ URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        console.log('Requested news id =', id);
+
+        // Dữ liệu các bài (thay/ mở rộng theo nhu cầu)
+        const newsData = {
+            "1": {
+                title: "Mẹo trang trí nhà phong cách Bắc Âu",
+                img: "../img/tintuc1.jpg",
+                content: "Khám phá cách kết hợp màu sắc và ánh sáng tự nhiên để tạo nên không gian sống tối giản nhưng sang trọng."
+            },
+            "2": {
+                title: "Chọn đèn phù hợp cho phòng ngủ",
+                img: "../img/tintuc2.jpg",
+                content: "Gợi ý những kiểu đèn giúp phòng ngủ ấm áp, thư giãn và phù hợp với từng phong cách nội thất."
+            }
+            // Thêm id:3,4,... nếu cần
+        };
+
+        // Hàm hiển thị
+        function renderNews(n) {
+            document.getElementById('news-title').textContent = n.title || 'Không có tiêu đề';
+            const imgEl = document.getElementById('news-img');
+            if (n.img) {
+                imgEl.src = n.img;
+                imgEl.style.display = 'block';
+                imgEl.alt = n.title;
+            } else {
+                imgEl.style.display = 'none';
+            }
+            document.getElementById('news-body').textContent = n.content || '';
+        }
+
+        // Kiểm tra và hiển thị
+        if (id && newsData[id]) {
+            renderNews(newsData[id]);
+        } else {
+            // Nếu id thiếu hoặc không hợp lệ, show danh sách liên kết trở lại
+            document.querySelector('.news-detail').innerHTML = `
+        <p style="text-align:center;padding:40px;font-size:18px;color:#555;">
+          Không tìm thấy bài viết. <a href="news.html">Quay về Tin tức</a>
+        </p>
+      `;
+            console.warn('news id not found:', id);
+        }
+    </script>
+</body>
+
+</html>

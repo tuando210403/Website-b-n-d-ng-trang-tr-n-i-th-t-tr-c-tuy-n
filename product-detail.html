@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - DecorHome</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">DecorHome</div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="products.html" class="active">Sản phẩm</a></li>
+                <li><a href="cart.html">Giỏ hàng</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="product-detail">
+        <h2 id="product-name">Tên sản phẩm</h2>
+        <img id="product-img" src="" alt="Sản phẩm" class="detail-img">
+        <p><strong>Giá:</strong> <span id="product-price"></span></p>
+        <p id="product-desc"></p>
+        <button class="btn">Thêm vào giỏ hàng</button>
+    </section>
+
+    <footer>
+        <p>Bản quyền © 2025 DecorHome</p>
+    </footer>
+
+    <script>
+        // Lấy id sản phẩm từ URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        // Danh sách 10 sản phẩm
+        const products = {
+            1: {
+                name: "Đèn treo trần",
+                price: "850.000đ",
+                img: "../img/den.jpg",
+                desc: "Đèn treo phong cách Bắc Âu, ánh sáng dịu nhẹ, phù hợp mọi không gian."
+            },
+            2: {
+                name: "Bàn sofa",
+                price: "1.500.000đ",
+                img: "../img/ban_sofa.jpg",
+                desc: "Bàn sofa gỗ sồi cao cấp, phong cách hiện đại, bền đẹp, dễ phối màu."
+            },
+            3: {
+                name: "Tủ gỗ",
+                price: "3.000.000đ",
+                img: "../img/tu_go.png",
+                desc: "Tủ gỗ 3 tầng sang trọng, thiết kế tối giản, thích hợp phòng khách."
+            },
+            4: {
+                name: "Ghế thư giãn",
+                price: "1.800.000đ",
+                img: "../img/ghe.jpg",
+                desc: "Ghế nệm mềm mại, khung gỗ chắc chắn, giúp thư giãn tối đa."
+            },
+            5: {
+                name: "Đèn bàn decor",
+                price: "550.000đ",
+                img: "../img/den_ban.jpg",
+                desc: "Đèn bàn thiết kế tinh tế, ánh sáng vàng ấm, phù hợp phòng ngủ."
+            },
+            6: {
+                name: "Thảm trải sàn",
+                price: "900.000đ",
+                img: "../img/tham.jpg",
+                desc: "Thảm lông mềm, chống trượt, mang lại cảm giác ấm cúng cho căn phòng."
+            },
+            7: {
+                name: "Tranh treo tường",
+                price: "1.200.000đ",
+                img: "../img/tranh.jpg",
+                desc: "Tranh canvas nghệ thuật, màu sắc hài hòa, tăng tính thẩm mỹ."
+            },
+            8: {
+                name: "Đồng hồ treo tường",
+                price: "450.000đ",
+                img: "../img/dongho.png",
+                desc: "Đồng hồ kim hiện đại, thiết kế tối giản, dễ phối hợp nội thất."
+            },
+            9: {
+                name: "Kệ gỗ treo tường",
+                price: "650.000đ",
+                img: "../img/ke_go_treo_tuong.jpg",
+                desc: "Kệ gỗ 3 tầng treo tường, tiện dụng cho phòng khách và phòng làm việc."
+            },
+            10: {
+                name: "Lọ hoa thủy tinh",
+                price: "320.000đ",
+                img: "../img/lo_hoa.jpg",
+                desc: "Lọ hoa thủy tinh cao cấp, phù hợp trang trí bàn ăn và phòng khách."
+            }
+        };
+
+        // Hiển thị dữ liệu sản phẩm theo ID
+        const p = products[id];
+        if (p) {
+            document.getElementById("product-name").textContent = p.name;
+            document.getElementById("product-price").textContent = p.price;
+            document.getElementById("product-desc").textContent = p.desc;
+            document.getElementById("product-img").src = p.img;
+            document.getElementById("product-img").alt = p.name;
+        } else {
+            document.querySelector(".product-detail").innerHTML = "<h2>Không tìm thấy sản phẩm</h2>";
+        }
+    </script>
+</body>
+
+</html>
