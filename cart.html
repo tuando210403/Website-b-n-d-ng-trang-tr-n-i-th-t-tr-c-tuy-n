@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">DecorHome</div>
+    </header>
+    <section class="cart-container">
+        <h2>🛒 Giỏ hàng của bạn</h2>
+
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                <tr>
+                    <td colspan="5">🛍️ Giỏ hàng trống</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <p><strong>Tổng cộng:</strong> <span id="cart-total">0đ</span></p>
+            <button class="checkout-btn" id="checkout-btn">Thanh toán</button>
+
+        </div>
+
+
+        <div class="back-home">
+            <a href="index.html" class="btn-back">← Trở về trang chủ</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Bản quyền © 2025 DecorHome</p>
+    </footer>
+    <script src="../js/script.js"></script>
+    <script>
+        document.getElementById("checkout-btn").addEventListener("click", function() {
+            window.location.href = "checkout.html"; // 🔗 Chuyển sang trang thanh toán
+        });
+    </script>
+
+</body>
+
+</html>
