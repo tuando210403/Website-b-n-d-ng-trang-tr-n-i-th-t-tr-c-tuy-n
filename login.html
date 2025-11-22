@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">DecorHome</div>
+    </header>
+    <section class="login-section">
+        <h2>Đăng nhập</h2>
+        <form onsubmit="event.preventDefault(); loginUser();">
+            <input type="text" id="loginEmail" placeholder="Tên đăng nhập">
+            <input type="password" id="loginPassword" placeholder="Mật khẩu">
+            <button class="btn">Đăng nhập</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Bản quyền © 2025 DecorHome</p>
+    </footer>
+    <script>
+        function loginUser() {
+            const username = document.getElementById("loginEmail").value.trim();
+            const password = document.getElementById("loginPassword").value.trim();
+
+            const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+            if (!storedUser) {
+                alert("⚠️ Bạn chưa đăng ký tài khoản! Vui lòng đăng ký trước.");
+                window.location.href = "register.html";
+                return;
+            }
+
+            if (username === storedUser.name && password === storedUser.password) {
+                alert("✅ Đăng nhập thành công!");
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("currentUser", storedUser.name);
+                window.location.href = "index.html";
+            } else {
+                alert("❌ Tên đăng nhập hoặc mật khẩu không đúng!");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
