@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán | DecorHome</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">DecorHome</div>
+    </header>
+
+    <section class="checkout-container">
+        <h2>🧾 Thông tin thanh toán</h2>
+
+        <form id="checkout-form">
+            <div class="form-group">
+                <label for="fullname">Họ và tên:</label>
+                <input type="text" id="fullname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số điện thoại:</label>
+                <input type="tel" id="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Địa chỉ giao hàng:</label>
+                <textarea id="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="payment">Phương thức thanh toán:</label>
+                <select id="payment" required>
+                    <option value="">-- Chọn phương thức --</option>
+                    <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                    <option value="bank">Chuyển khoản ngân hàng</option>
+                    <option value="momo">Ví MoMo</option>
+                </select>
+            </div>
+
+            <div class="order-summary">
+                <h3>🛍️ Tóm tắt đơn hàng</h3>
+                <p><strong>Tổng cộng:</strong> <span id="order-total">0đ</span></p>
+            </div>
+
+            <div class="checkout-buttons">
+                <a href="cart.html" class="back-btn">← Trở về giỏ hàng</a>
+                <button type="submit" class="confirm-btn">Xác nhận đặt hàng</button>
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        Bản quyền © 2025 DecorHome
+    </footer>
+
+    <script>
+        // Xử lý nút đặt hàng
+        document.getElementById("checkout-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("🎉 Cảm ơn bạn! Đơn hàng đã được ghi nhận.");
+            window.location.href = "index.html";
+        });
+
+        // Lấy tổng tiền từ localStorage (nếu có)
+        const total = localStorage.getItem("cartTotal");
+        if (total) document.getElementById("order-total").textContent = total;
+    </script>
+</body>
+
+</html>
